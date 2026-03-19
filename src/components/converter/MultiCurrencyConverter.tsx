@@ -3,7 +3,6 @@ import { useCallback, useMemo, useState } from "react";
 import {
   mockCurrencies,
   getCurrencyMeta,
-  DEFAULT_CODES,
   type CurrencyCode,
 } from "../../data/currencies.mock";
 import { Text } from "../../design-system";
@@ -20,9 +19,10 @@ import { EmptyState } from "./EmptyState";
 const INITIAL_USD = 100;
 
 export function MultiCurrencyConverter() {
-  const [selectedCodes, setSelectedCodes] = useState<CurrencyCode[]>(DEFAULT_CODES);
+  const [selectedCodes, setSelectedCodes] = useState<CurrencyCode[]>([]);
   const [baseUsd, setBaseUsd] = useState(INITIAL_USD);
-  const [activeCode, setActiveCode] = useState<CurrencyCode>(DEFAULT_CODES[0]);
+  /** Valid placeholder until the list is non-empty; not shown while empty */
+  const [activeCode, setActiveCode] = useState<CurrencyCode>("USD");
   const [pickerOpen, setPickerOpen] = useState(false);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
