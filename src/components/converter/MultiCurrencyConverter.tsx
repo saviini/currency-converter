@@ -5,7 +5,6 @@ import {
   getCurrencyMeta,
   DEFAULT_CODES,
   type CurrencyCode,
-  type CurrencyMeta,
 } from "../../data/currencies.mock";
 import { Text } from "../../design-system";
 import {
