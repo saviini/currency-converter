@@ -4,18 +4,23 @@
  */
 export const designTokens = {
   color: {
-    bgBase: "#0f1419",
-    bgElevated: "#1a222c",
-    bgSurface: "#242d3a",
-    borderSubtle: "rgba(255, 255, 255, 0.06)",
-    borderStrong: "rgba(255, 255, 255, 0.12)",
+    bgBase: "#0a0a0a",
+    bgElevated: "rgba(255,255,255,0.04)",
+    bgSurface: "rgba(255,255,255,0.07)",
+    borderSubtle: "rgba(255, 255, 255, 0.08)",
+    borderStrong: "rgba(255, 255, 255, 0.15)",
     textPrimary: "#f4f6f8",
     textSecondary: "#8b98a8",
     textMuted: "#5c6b7d",
-    accent: "#3d9cf5",
-    accentMuted: "rgba(61, 156, 245, 0.15)",
+    accent: "#ff5e3a",
+    accentMuted: "rgba(255, 94, 58, 0.18)",
     positive: "#34c759",
     negative: "#ff453a",
+  },
+  glass: {
+    blur: "20px",
+    glowAccent: "0 0 0 1px rgba(255,94,58,0.4), 0 0 24px rgba(255,94,58,0.35)",
+    glowCard: "0 8px 32px rgba(0,0,0,0.6)",
   },
   space: {
     xs: 4,
@@ -30,11 +35,10 @@ export const designTokens = {
     sm: 8,
     md: 12,
     lg: 16,
-    xl: 20,
+    xl: 22,
     full: 9999,
   },
   type: {
-    /** px */
     display: 28,
     title: 20,
     body: 17,

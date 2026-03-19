@@ -1,27 +1,34 @@
 /* Primitives — only design-system components use these classes */
 
+/* ─── Card ─────────────────────────────────────────────── */
 .ds-card {
-  background: var(--ds-color-bg-elevated);
-  border: 1px solid var(--ds-color-border-subtle);
-  border-radius: var(--ds-radius-lg);
-  box-shadow: var(--ds-shadow-card), var(--ds-shadow-inset);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--ds-radius-xl);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 8px 32px rgba(0, 0, 0, 0.55);
 }
 
 .ds-card--interactive {
   -webkit-tap-highlight-color: transparent;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition: background 0.18s ease, border-color 0.18s ease;
 }
 
 .ds-card--interactive:active {
-  background: var(--ds-color-bg-surface);
+  background: rgba(255, 255, 255, 0.06);
 }
 
+/* ─── Typography ────────────────────────────────────────── */
 .ds-text-display {
   font-family: var(--ds-font-display);
   font-size: var(--ds-text-display);
   line-height: var(--ds-text-display-lh);
   letter-spacing: var(--ds-text-display-track);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ds-color-text-primary);
 }
 
@@ -29,7 +36,7 @@
   font-family: var(--ds-font-display);
   font-size: var(--ds-text-title);
   line-height: var(--ds-text-title-lh);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ds-color-text-primary);
 }
 
@@ -59,24 +66,25 @@
   font-size: var(--ds-text-micro);
   line-height: 1.25;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: var(--ds-color-text-muted);
 }
 
+/* ─── Input ─────────────────────────────────────────────── */
 .ds-input-wrap {
   display: flex;
   align-items: center;
   min-height: var(--ds-touch-min);
   padding: 0 var(--ds-space-lg);
-  background: var(--ds-color-bg-input);
-  border: 1px solid var(--ds-color-border-subtle);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--ds-radius-md);
   -webkit-tap-highlight-color: transparent;
 }
 
 .ds-input-wrap:focus-within {
-  border-color: var(--ds-color-accent);
-  box-shadow: 0 0 0 1px var(--ds-color-accent-muted);
+  border-color: rgba(0, 210, 255, 0.45);
+  box-shadow: 0 0 0 2px rgba(0, 210, 255, 0.10);
 }
 
 .ds-input {
@@ -85,9 +93,10 @@
   border: none;
   background: transparent;
   font-family: var(--ds-font-display);
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--ds-color-text-primary);
   padding: var(--ds-space-md) 0;
   -webkit-appearance: none;
@@ -102,6 +111,7 @@
   outline: none;
 }
 
+/* ─── Pill ──────────────────────────────────────────────── */
 .ds-pill {
   display: inline-flex;
   align-items: center;
@@ -109,13 +119,17 @@
   min-height: 2rem;
   padding: 0 var(--ds-space-md);
   border-radius: var(--ds-radius-full);
-  background: var(--ds-color-accent-muted);
+  background: rgba(0, 210, 255, 0.12);
   color: var(--ds-color-accent);
-  font-size: var(--ds-text-caption);
-  font-weight: 600;
-  font-family: var(--ds-font-body);
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-micro);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(0, 210, 255, 0.20);
+  flex-shrink: 0;
 }
 
+/* ─── Ghost button ──────────────────────────────────────── */
 .ds-btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -138,15 +152,19 @@
   opacity: 0.7;
 }
 
+/* ─── Flag ──────────────────────────────────────────────── */
 .ds-flag {
   font-size: 1.5rem;
   line-height: 1;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--ds-radius-md);
-  background: var(--ds-color-bg-surface);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   flex-shrink: 0;
 }
