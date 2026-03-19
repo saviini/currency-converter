@@ -40,20 +40,25 @@ export function CurrencyRow({
       interactive
       draggable={!isActive}
       className={`currency-row${isDragOver ? " currency-row--drag-over" : ""}`}
-      onClick={onActivate}
-      role="button"
-      tabIndex={0}
+      onClick={isActive ? undefined : onActivate}
+      /* role="button" + nested <input> breaks mobile: first tap focuses "button", not field */
+      role={isActive ? "group" : "button"}
+      tabIndex={isActive ? -1 : 0}
       onDragStart={(e) => onDragStart(e, index)}
       onDragOver={(e) => onDragOver(e, index)}
       onDragLeave={onDragLeave}
       onDrop={(e) => onDrop(e, index)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onActivate();
-        }
-      }}
-      aria-label={`${meta.name}, ${isActive ? "editing" : "tap to edit"}`}
+      onKeyDown={
+        isActive
+          ? undefined
+          : (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onActivate();
+              }
+            }
+      }
+      aria-label={`${meta.name}, ${isActive ? "editing amount" : "tap to edit"}`}
     >
       <div className="currency-row__top">
         <span className="ds-flag" aria-hidden>
