@@ -8,6 +8,7 @@ import {
 import { Text } from "../../design-system";
 import {
   amountToUsd,
+  formatAmountInputLive,
   formatCurrencyAmount,
   parseAmountInput,
   usdToAmount,
@@ -51,7 +52,7 @@ export function MultiCurrencyConverter() {
 
   const handleInputChange = useCallback(
     (raw: string) => {
-      setDraft(raw);
+      setDraft(formatAmountInputLive(raw, activeMeta.decimals));
       const n = parseAmountInput(raw);
       if (n === null) return;
       setBaseUsd(amountToUsd(n, activeMeta));
@@ -65,13 +66,17 @@ export function MultiCurrencyConverter() {
   }, [baseUsd, activeMeta]);
 
   const handleAdd = useCallback((code: CurrencyCode) => {
-    setSelectedCodes((prev) => [...prev, code]);
-    if (selectedCodes.length === 0) {
-      setActiveCode(code);
-      const meta = getCurrencyMeta(code);
-      setDraft(formatCurrencyAmount(usdToAmount(INITIAL_USD, meta), meta));
-    }
-  }, [selectedCodes.length]);
+    setSelectedCodes((prev) => {
+      if (prev.length === 0) {
+        const meta = getCurrencyMeta(code);
+        const amountInCurrency = 100;
+        setActiveCode(code);
+        setBaseUsd(amountToUsd(amountInCurrency, meta));
+        setDraft(formatCurrencyAmount(amountInCurrency, meta));
+      }
+      return [...prev, code];
+    });
+  }, []);
 
   const handleRemove = useCallback(
     (code: CurrencyCode) => {

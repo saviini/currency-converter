@@ -10,7 +10,8 @@ export function EmptyState({ onAdd }: EmptyStateProps) {
         <p className="empty-state__subtitle">Add currencies to start converting</p>
       </div>
       <button type="button" className="empty-state__btn" onClick={onAdd} aria-label="Add your first currency">
-        + Add currency
+        <span className="add-currency-btn__icon" aria-hidden>+</span>
+        Add currency
       </button>
     </div>
   );

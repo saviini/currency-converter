@@ -189,7 +189,14 @@ body {
   border-color: rgba(255, 69, 58, 0.3);
 }
 
-/* Add currency button — glassmorphism, no dashed accent border */
+/* Add currency buttons — shared height, type scale, + icon */
+.add-currency-btn__icon {
+  font-size: 1.5em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Add currency (list) — glassmorphism */
 .add-currency-btn {
   display: flex;
   align-items: center;
@@ -197,6 +204,10 @@ body {
   gap: var(--ds-space-sm);
   width: 100%;
   min-height: var(--ds-touch-min);
+  height: var(--ds-touch-min);
+  padding: 0 var(--ds-space-2xl);
+  box-sizing: border-box;
+  white-space: nowrap;
   border-radius: var(--ds-radius-xl);
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(255, 255, 255, 0.05);
@@ -208,14 +219,10 @@ body {
   font-size: var(--ds-text-caption);
   font-weight: 700;
   letter-spacing: 0.04em;
+  line-height: 1;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
-}
-
-.add-currency-btn__icon {
-  font-size: 1.5em;
-  line-height: 1;
 }
 
 .add-currency-btn:active {
@@ -269,7 +276,10 @@ body {
   justify-content: center;
   gap: var(--ds-space-sm);
   min-height: var(--ds-touch-min);
+  height: var(--ds-touch-min);
   padding: 0 var(--ds-space-2xl);
+  box-sizing: border-box;
+  white-space: nowrap;
   border-radius: var(--ds-radius-full);
   border: 1px solid rgba(0, 210, 255, 0.30);
   background: rgba(0, 210, 255, 0.10);
@@ -278,6 +288,7 @@ body {
   font-size: var(--ds-text-caption);
   font-weight: 700;
   letter-spacing: 0.04em;
+  line-height: 1;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   transition: background 0.15s;
@@ -287,7 +298,7 @@ body {
   background: rgba(0, 210, 255, 0.18);
 }
 
-/* Currency picker bottom sheet */
+/* Currency picker — near full-screen sheet (Telegram-style), small gap at top */
 .currency-picker-overlay {
   position: fixed;
   inset: 0;
@@ -296,7 +307,12 @@ body {
   backdrop-filter: blur(6px);
   z-index: 100;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  padding: max(var(--ds-safe-top), 0.75rem) max(var(--ds-space-sm), var(--ds-safe-left))
+    max(var(--ds-space-sm), var(--ds-safe-bottom)) max(var(--ds-space-sm), var(--ds-safe-right));
+  box-sizing: border-box;
   animation: overlay-in 0.2s ease;
 }
 
@@ -309,20 +325,29 @@ body {
   width: 100%;
   max-width: var(--ds-max-width);
   margin: 0 auto;
-  border-radius: var(--ds-radius-xl) var(--ds-radius-xl) 0 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: calc(100dvh - max(var(--ds-safe-top), 0.75rem) - max(var(--ds-space-sm), var(--ds-safe-bottom)) - 0.5rem);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--ds-radius-xl);
   background: rgba(8, 8, 12, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.09);
-  border-bottom: none;
   -webkit-backdrop-filter: blur(40px) saturate(160%);
   backdrop-filter: blur(40px) saturate(160%);
-  padding: var(--ds-space-lg) var(--ds-space-xl) 0;
-  padding-bottom: 0;
+  padding: 0;
+  overflow: hidden;
   animation: sheet-in 0.25s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @keyframes sheet-in {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+  from { transform: translateY(100%); opacity: 0.96; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.currency-picker-sheet__top {
+  flex-shrink: 0;
+  padding: var(--ds-space-lg) var(--ds-space-xl) 0;
 }
 
 .currency-picker-sheet__handle {
@@ -391,13 +416,14 @@ body {
 }
 
 .currency-picker-list {
-  max-height: 52vh;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   gap: var(--ds-space-sm);
-  padding-bottom: calc(var(--ds-safe-bottom) + var(--ds-space-md));
+  padding: 0 var(--ds-space-xl) calc(var(--ds-safe-bottom) + var(--ds-space-md));
   /* hide scrollbar — no visual noise */
   scrollbar-width: none;
   -ms-overflow-style: none;

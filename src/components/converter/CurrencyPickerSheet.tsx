@@ -50,33 +50,35 @@ export function CurrencyPickerSheet({
         className="currency-picker-sheet"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="currency-picker-sheet__handle" />
-        <div className="currency-picker-sheet__title">Add currency</div>
+        <div className="currency-picker-sheet__top">
+          <div className="currency-picker-sheet__handle" />
+          <div className="currency-picker-sheet__title">Add currency</div>
 
-        {/* Search input */}
-        <div className="currency-picker-search ds-input-wrap">
-          <span className="currency-picker-search__icon" aria-hidden>⌕</span>
-          <input
-            className="currency-picker-search__input"
-            type="text"
-            placeholder="Search by name or code…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            autoFocus
-            autoComplete="off"
-            autoCorrect="off"
-            spellCheck={false}
-            aria-label="Search currencies"
-          />
-          {query && (
-            <button
-              className="currency-picker-search__clear"
-              onClick={() => setQuery("")}
-              aria-label="Clear search"
-            >
-              ×
-            </button>
-          )}
+          <div className="currency-picker-search ds-input-wrap">
+            <span className="currency-picker-search__icon" aria-hidden>⌕</span>
+            <input
+              className="currency-picker-search__input"
+              type="text"
+              placeholder="Search by name or code…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              autoFocus
+              autoComplete="off"
+              autoCorrect="off"
+              spellCheck={false}
+              aria-label="Search currencies"
+            />
+            {query && (
+              <button
+                type="button"
+                className="currency-picker-search__clear"
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+              >
+                ×
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="currency-picker-list">
