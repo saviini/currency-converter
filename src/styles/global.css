@@ -1,0 +1,112 @@
+@import "../design-system/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  background: var(--ds-color-bg-base);
+  font-family: var(--ds-font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+}
+
+/* App layout */
+.app-shell {
+  max-width: var(--ds-max-width);
+  margin: 0 auto;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  padding: calc(var(--ds-safe-top) + var(--ds-space-lg)) var(--ds-space-xl)
+    calc(var(--ds-safe-bottom) + var(--ds-space-2xl));
+  padding-left: max(var(--ds-space-xl), var(--ds-safe-left));
+  padding-right: max(var(--ds-space-xl), var(--ds-safe-right));
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-2xl);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+}
+
+.app-header__mark {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--ds-radius-md);
+  background: linear-gradient(145deg, var(--ds-color-accent) 0%, #2563b8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: var(--ds-shadow-card);
+}
+
+.app-header__titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.converter-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+}
+
+.currency-row {
+  padding: var(--ds-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-space-md);
+}
+
+.currency-row__top {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-md);
+}
+
+.currency-row__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.currency-row__code-line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ds-space-sm);
+}
+
+.currency-row__active {
+  outline: 2px solid var(--ds-color-accent);
+  outline-offset: 0;
+}
+
+.currency-row__rate-hint {
+  margin-top: var(--ds-space-xs);
+}
+
+.footer-note {
+  margin-top: auto;
+  text-align: center;
+  padding-top: var(--ds-space-xl);
+}

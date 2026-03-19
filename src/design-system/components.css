@@ -1,0 +1,152 @@
+/* Primitives — only design-system components use these classes */
+
+.ds-card {
+  background: var(--ds-color-bg-elevated);
+  border: 1px solid var(--ds-color-border-subtle);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-card), var(--ds-shadow-inset);
+}
+
+.ds-card--interactive {
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.ds-card--interactive:active {
+  background: var(--ds-color-bg-surface);
+}
+
+.ds-text-display {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-display);
+  line-height: var(--ds-text-display-lh);
+  letter-spacing: var(--ds-text-display-track);
+  font-weight: 600;
+  color: var(--ds-color-text-primary);
+}
+
+.ds-text-title {
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-title);
+  line-height: var(--ds-text-title-lh);
+  font-weight: 600;
+  color: var(--ds-color-text-primary);
+}
+
+.ds-text-body {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-body);
+  line-height: var(--ds-text-body-lh);
+  color: var(--ds-color-text-primary);
+}
+
+.ds-text-body-sm {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-body-sm);
+  line-height: 1.35;
+  color: var(--ds-color-text-secondary);
+}
+
+.ds-text-caption {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-caption);
+  line-height: 1.3;
+  color: var(--ds-color-text-muted);
+}
+
+.ds-text-micro {
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-micro);
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ds-color-text-muted);
+}
+
+.ds-input-wrap {
+  display: flex;
+  align-items: center;
+  min-height: var(--ds-touch-min);
+  padding: 0 var(--ds-space-lg);
+  background: var(--ds-color-bg-input);
+  border: 1px solid var(--ds-color-border-subtle);
+  border-radius: var(--ds-radius-md);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ds-input-wrap:focus-within {
+  border-color: var(--ds-color-accent);
+  box-shadow: 0 0 0 1px var(--ds-color-accent-muted);
+}
+
+.ds-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--ds-font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ds-color-text-primary);
+  padding: var(--ds-space-md) 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.ds-input::placeholder {
+  color: var(--ds-color-text-muted);
+}
+
+.ds-input:focus {
+  outline: none;
+}
+
+.ds-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0 var(--ds-space-md);
+  border-radius: var(--ds-radius-full);
+  background: var(--ds-color-accent-muted);
+  color: var(--ds-color-accent);
+  font-size: var(--ds-text-caption);
+  font-weight: 600;
+  font-family: var(--ds-font-body);
+}
+
+.ds-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--ds-touch-min);
+  min-width: var(--ds-touch-min);
+  padding: 0 var(--ds-space-lg);
+  border: none;
+  border-radius: var(--ds-radius-md);
+  background: transparent;
+  color: var(--ds-color-accent);
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-body-sm);
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.ds-btn-ghost:active {
+  opacity: 0.7;
+}
+
+.ds-flag {
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-bg-surface);
+  flex-shrink: 0;
+}
